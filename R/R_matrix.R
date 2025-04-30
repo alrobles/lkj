@@ -11,5 +11,6 @@
 #' @examples
 #' R_matrix(2, 0.1)
 R_matrix <- function(k, y){
+  w <- .lkj_cmit(k = k, y)
   t(w) %*% w
 }
