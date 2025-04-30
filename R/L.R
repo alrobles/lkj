@@ -9,8 +9,8 @@
 #' @export
 #'
 #' @examples
-#' L(2, 1)
+#' L(2, 0.1)
 L <- function(k, y){
-  w <- .lkj_cmit(k = k, y)
-  t(w) %*% w
+  t(.lkj_cmit(k = k, y))
+  # t(w) %*% w
 }
