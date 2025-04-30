@@ -9,8 +9,7 @@
 #' @export
 #'
 #' @examples
-#' L(2, 0.1)
-L <- function(k, y){
-  t(.lkj_cmit(k = k, y))
-  # t(w) %*% w
+#' R_matrix(2, 0.1)
+R_matrix <- function(k, y){
+  t(w) %*% w
 }
