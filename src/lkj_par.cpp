@@ -20,8 +20,8 @@ inline double cpc_inv(NumericVector numbers) {
   return product;
 }
 
-// [[Rcpp::export]]
-NumericVector ljk_par(NumericMatrix w) {
+// [[Rcpp::export(.lkj_par)]]
+NumericVector lkj_par(NumericMatrix w) {
 
   int n_rows = w.nrow();
   int n_cols = w.ncol();

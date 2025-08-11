@@ -22,21 +22,21 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// ljk_par
-NumericVector ljk_par(NumericMatrix w);
-RcppExport SEXP _lkj_ljk_par(SEXP wSEXP) {
+// lkj_par
+NumericVector lkj_par(NumericMatrix w);
+RcppExport SEXP _lkj_lkj_par(SEXP wSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericMatrix >::type w(wSEXP);
-    rcpp_result_gen = Rcpp::wrap(ljk_par(w));
+    rcpp_result_gen = Rcpp::wrap(lkj_par(w));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
     {"_lkj_lkj_cmit", (DL_FUNC) &_lkj_lkj_cmit, 2},
-    {"_lkj_ljk_par", (DL_FUNC) &_lkj_ljk_par, 1},
+    {"_lkj_lkj_par", (DL_FUNC) &_lkj_lkj_par, 1},
     {NULL, NULL, 0}
 };
 

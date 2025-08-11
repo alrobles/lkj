@@ -21,5 +21,5 @@ lkj
 Return the Cholesky factor of the correlation matrix from random parameter
 }
 \examples{
-R_matrix(2, 0.1)
+L_matrix(2, 0.1)
 }

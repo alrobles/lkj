@@ -5,7 +5,7 @@
     .Call(`_lkj_lkj_cmit`, k, y)
 }
 
-ljk_par <- function(w) {
-    .Call(`_lkj_ljk_par`, w)
+.lkj_par <- function(w) {
+    .Call(`_lkj_lkj_par`, w)
 }
 
