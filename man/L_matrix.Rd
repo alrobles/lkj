@@ -5,11 +5,9 @@
 \title{lkj
 Return the Cholesky factor of the correlation matrix from random parameter}
 \usage{
-L_matrix(k, y)
+L_matrix(y)
 }
 \arguments{
-\item{k}{integer. The dimension of the matrix}
-
 \item{y}{The number of parameters to map.
 The number of parameters should be is k*(k-1)/2}
 }
@@ -21,5 +19,5 @@ lkj
 Return the Cholesky factor of the correlation matrix from random parameter
 }
 \examples{
-L_matrix(2, 0.1)
+L_matrix(0.1)
 }

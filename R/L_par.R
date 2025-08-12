@@ -8,7 +8,7 @@
 #' @export
 #'
 #' @examples
-#' L <- L_matrix(2, 0.1)
+#' L <- L_matrix(0.1)
 #' L_par(L)
 L_par <- function(L){
   .lkj_par( t(L) )

@@ -19,6 +19,6 @@ lkj
 Return the parameters  of a Cholesky factor of the correlation matrix
 }
 \examples{
-L <- L_matrix(2, 0.1)
+L <- L_matrix(0.1)
 L_par(L)
 }
