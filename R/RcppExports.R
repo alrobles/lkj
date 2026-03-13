@@ -9,3 +9,7 @@
     .Call(`_lkj_lkj_par`, w)
 }
 
+cvine_cholesky <- function(v, d, eta = 1.0) {
+    .Call(`_lkj_cvine_cholesky`, v, d, eta)
+}
+

@@ -3,5 +3,8 @@
 export(L_matrix)
 export(L_par)
 export(R_matrix)
+export(cvine_cholesky)
+export(rlkj_cvine)
 importFrom(Rcpp,sourceCpp)
+importFrom(stats,rlogis)
 useDynLib(lkj, .registration = TRUE)
