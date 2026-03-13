@@ -12,7 +12,8 @@ onion_corr(d, eta = 1)
 \item{eta}{Positive shape parameter (default 1 gives uniform distribution).}
 }
 \value{
-A \code{d x d} positive definite correlation matrix.
+A \code{d x d} positive definite correlation matrix with no
+  dimnames (plain matrix).
 }
 \description{
 Implements the onion method of Ghosh & Henderson (2003) as extended by
