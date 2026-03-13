@@ -1,14 +1,13 @@
 #' Generate random correlation matrices from the LKJ distribution via C-vine
 #'
-#' Draws \code{n} random correlation matrices of dimension \code{d} whose
-#' density is proportional to \eqn{\det(R)^{\eta-1}}. The method uses the
-#' C-vine construction implemented in C++ via \code{\link{cvine_cholesky}},
-#' with independent logistic draws for the underlying unconstrained reals.
+#' Draws \code{n} random correlation matrices of dimension \code{d} whose density
+#' is proportional to \eqn{\det(R)^{\eta-1}}. The method uses the C-vine
+#' construction with independent logistic draws for the underlying partial
+#' correlations.
 #'
 #' @param n Number of matrices to generate.
-#' @param d Dimension of the correlation matrices.
-#' @param eta Positive shape parameter (default 1 gives the uniform
-#'   distribution over correlation matrices).
+#' @param d Dimension of the matrices.
+#' @param eta Positive shape parameter (default 1 gives uniform distribution).
 #'
 #' @return If \code{n = 1}, a \code{d x d} correlation matrix.
 #'   If \code{n > 1}, an array of dimension \code{c(d, d, n)}.
@@ -26,13 +25,12 @@ rlkj_cvine <- function(n, d, eta = 1) {
   )
 
   m <- d * (d - 1L) / 2L
-  if (n == 1L) {
+  if (n == 1) {
     v <- stats::rlogis(m)
-    L <- cvine_cholesky(v, d, eta)
-    return(L %*% t(L))
+    return(cvine_cholesky(v, d, eta) %*% t(cvine_cholesky(v, d, eta)))
   }
 
-  # For n > 1, return a 3D array of correlation matrices
+  # For n > 1, return a 3D array
   out <- array(0, dim = c(d, d, n))
   for (i in seq_len(n)) {
     v <- stats::rlogis(m)
