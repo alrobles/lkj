@@ -61,7 +61,7 @@ static NumericVector forward_solve_lower(const NumericMatrix& L,
 // correlation matrices based on vines and extended onion method." Journal of
 // Multivariate Analysis, 100(9):1989-2001.
 
-// [[Rcpp::export]]
+// [[Rcpp::export(cvine_cholesky_cpp)]]
 NumericMatrix cvine_cholesky(NumericVector v, int d, double eta = 1.0) {
 
   // --- Input validation -----------------------------------------------------

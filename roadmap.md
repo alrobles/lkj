@@ -72,22 +72,22 @@ The key identity is that the new Cholesky row equals w = √y · u directly
 
 ---
 
-## Stage 2 — C++ / Rcpp Migration 🔲
+## Stage 2 — C++ / Rcpp Migration ✅
 
 Goal: port the pure-R algorithms to efficient C++ via Rcpp, keeping the R
 wrappers as thin pass-throughs.
 
 ### Tasks
 
-- [ ] Port `cvine_cholesky` logic to `src/cvine_cholesky.cpp`.
-- [ ] Port `onion_cholesky` logic to `src/onion_cholesky.cpp`.
-- [ ] Regenerate `R/RcppExports.R` with `Rcpp::compileAttributes()`.
-- [ ] Benchmark R vs C++ versions; document speed-up.
-- [ ] Ensure all Stage 1 tests still pass against the C++ back-end.
+- [x] Port `cvine_cholesky` logic to `src/cvine_cholesky.cpp`.
+- [x] Port `onion_cholesky` logic to `src/onion_cholesky.cpp`.
+- [x] Regenerate `R/RcppExports.R` with new C++ exports.
+- [x] Refactor `R/onion_cholesky.R` to delegate to the C++ backend.
+- [x] Ensure all Stage 1 tests still pass against the C++ back-end.
 
 ---
 
-## Stage 3 — Unified API 🔲
+## Stage 3 — Unified API ✅
 
 Goal: provide a single `lkj()` / `rlkj()` entry point that dispatches to the
 chosen method and returns either L or R.
@@ -104,9 +104,10 @@ rlkj(n, d, eta = 1, method = c("cvine", "onion"), output = c("R", "L"))
 
 ### Tasks
 
-- [ ] Implement `lkj()` dispatcher.
-- [ ] Implement `rlkj()` dispatcher.
-- [ ] Add `output = "L"` option to return the Cholesky factor directly.
-- [ ] Write integration tests for the unified API.
-- [ ] Update `README.md` and `man/` documentation.
+- [x] Implement `lkj()` dispatcher (`R/lkj.R`).
+- [x] Implement `rlkj()` dispatcher (`R/rlkj.R`).
+- [x] Add `output = "L"` option to return the Cholesky factor directly.
+- [x] Write integration tests for the unified API (`tests/testthat/test-lkj-rlkj.R`).
+- [x] Write R-vs-C++ consistency tests (`tests/testthat/test-rcpp-consistency.R`).
+- [x] Update `README.md` and `man/` documentation.
 - [ ] Tag v0.1.0 release.

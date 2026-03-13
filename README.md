@@ -39,9 +39,11 @@ remotes::install_github("alrobles/lkj")
 
 | Function | Method | Type | Description |
 |---|---|---|---|
-| `cvine_cholesky(v, d, eta)` | C-vine | Deterministic | Maps d(d−1)/2 reals to a Cholesky factor L |
+| `lkj(v, d, eta, method, output)` | cvine / onion | Deterministic | Unified dispatcher: maps reals to a Cholesky factor or correlation matrix |
+| `rlkj(n, d, eta, method, output)` | cvine / onion | Random | Unified dispatcher: generates n random Cholesky factors or correlation matrices |
+| `cvine_cholesky(v, d, eta)` | C-vine | Deterministic | Maps d(d−1)/2 reals to a Cholesky factor L (C++ backend) |
 | `rlkj_cvine(n, d, eta)` | C-vine | Random | Generates n random correlation matrices |
-| `onion_cholesky(v, d, eta)` | Onion | Deterministic | Maps d(d+1)/2−2 reals to a Cholesky factor L |
+| `onion_cholesky(v, d, eta)` | Onion | Deterministic | Maps d(d+1)/2−2 reals to a Cholesky factor L (C++ backend) |
 | `onion_corr(d, eta)` | Onion | Random | Generates a single random correlation matrix |
 | `ronion(n, d, eta)` | Onion | Random | Generates n random correlation matrices |
 | `L_matrix(y)` | C-vine (Rcpp) | Deterministic | Cholesky factor from parameter vector |
@@ -51,6 +53,32 @@ remotes::install_github("alrobles/lkj")
 ---
 
 ## Quick Examples
+
+### Unified API (recommended)
+
+```r
+library(lkj)
+
+# Deterministic mapping: C-vine, d=4 (need 6 parameters)
+v <- c(-0.5, 0.3, 1.2, -0.8, 0.1, 0.6)
+R <- lkj(v, d = 4, eta = 1, method = "cvine")
+print(round(R, 4))
+
+# Deterministic mapping: Onion, d=4 (need 8 parameters)
+v2 <- rep(0, 8)
+R2 <- lkj(v2, d = 4, eta = 1, method = "onion")
+
+# Return Cholesky factor directly
+L <- lkj(v, d = 4, eta = 1, method = "cvine", output = "L")
+
+# Random generation: single 3x3 C-vine matrix
+R <- rlkj(1, d = 3, eta = 2)
+
+# Random generation: ten 4x4 Onion matrices
+arr <- rlkj(10, d = 4, eta = 1, method = "onion")
+```
+
+### Lower-level functions
 
 ### Deterministic mapping (C-vine)
 
@@ -112,8 +140,8 @@ See [`roadmap.md`](roadmap.md) for the three-stage plan:
 | Stage | Goal | Status |
 |---|---|---|
 | 1 | Pure-R implementations + tests | ✅ Complete |
-| 2 | C++ / Rcpp migration | 🔲 Pending |
-| 3 | Unified `lkj()` / `rlkj()` API | 🔲 Pending |
+| 2 | C++ / Rcpp migration | ✅ Complete |
+| 3 | Unified `lkj()` / `rlkj()` API | ✅ Complete |
 
 ---
 
