@@ -7,7 +7,8 @@
 #' @param d Dimension of the matrix (>= 1).
 #' @param eta Positive shape parameter (default 1 gives uniform distribution).
 #'
-#' @return A \code{d x d} positive definite correlation matrix.
+#' @return A \code{d x d} positive definite correlation matrix with no
+#'   dimnames (plain matrix).
 #'
 #' @references
 #' Lewandowski, D., Kurowicka, D., & Joe, H. (2009).
@@ -35,6 +36,7 @@ onion_corr <- function(d, eta = 1) {
   R <- matrix(c(1, r12, r12, 1), 2, 2)
 
   if (d == 2L) {
+    dimnames(R) <- NULL
     return(R)
   }
 
@@ -63,5 +65,7 @@ onion_corr <- function(d, eta = 1) {
     R <- rbind(cbind(R, z), c(z, 1))
   }
 
+  # Remove any dimnames that may have been created by cbind/rbind
+  dimnames(R) <- NULL
   R
 }

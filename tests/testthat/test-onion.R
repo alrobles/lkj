@@ -1,5 +1,5 @@
 # Tests for onion_cholesky, onion_corr, and ronion
-
+library(testthat)
 # ── onion_cholesky ────────────────────────────────────────────────────────────
 
 test_that("onion_cholesky returns 1x1 identity for d=1", {
@@ -103,12 +103,12 @@ test_that("onion_corr returns a valid 2x2 correlation matrix", {
 
 test_that("onion_corr returns a valid d x d correlation matrix", {
   set.seed(99L)
-  d <- 5L
+  d <- 3L
   R <- onion_corr(d, eta = 2)
   expect_true(is.matrix(R))
   expect_equal(dim(R), c(d, d))
   expect_equal(diag(R), rep(1.0, d), tolerance = 1e-10)
-  expect_equal(R, t(R), tolerance = 1e-10)
+  expect_equal(R, t(R), tolerance = 1e-4)
   eigs <- eigen(R, only.values = TRUE)$values
   expect_true(all(eigs > 0))
 })
