@@ -33,10 +33,24 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// cvine_cholesky
+NumericMatrix cvine_cholesky(NumericVector v, int d, double eta);
+RcppExport SEXP _lkj_cvine_cholesky(SEXP vSEXP, SEXP dSEXP, SEXP etaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type v(vSEXP);
+    Rcpp::traits::input_parameter< int >::type d(dSEXP);
+    Rcpp::traits::input_parameter< double >::type eta(etaSEXP);
+    rcpp_result_gen = Rcpp::wrap(cvine_cholesky(v, d, eta));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_lkj_lkj_cmit", (DL_FUNC) &_lkj_lkj_cmit, 2},
     {"_lkj_lkj_par", (DL_FUNC) &_lkj_lkj_par, 1},
+    {"_lkj_cvine_cholesky", (DL_FUNC) &_lkj_cvine_cholesky, 3},
     {NULL, NULL, 0}
 };
 
