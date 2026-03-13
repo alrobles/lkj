@@ -6,7 +6,11 @@
 # Reference: Lewandowski, Kurowicka & Joe (2009), Sec. 2.4 (C-vine) and Eq. (2).
 
 cvine_cholesky <- function(v, d, eta = 1) {
-  stopifnot(d >= 1, eta > 0, is.numeric(v))
+  stopifnot(
+    "d must be >= 1" = d >= 1,
+    "eta must be > 0" = eta > 0,
+    "v must be numeric" = is.numeric(v)
+  )
 
   if (d == 1L) return(matrix(1, 1, 1))
 
