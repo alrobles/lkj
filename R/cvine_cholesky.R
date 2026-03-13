@@ -18,7 +18,7 @@ cvine_cholesky <- function(v, d, eta = 1) {
   }
 
   # Stable map to (0,1)
-  to_unit <- function(x, eps = 1e-12) pmin(pmax(plogis(x), eps), 1 - eps)
+  to_unit <- function(x, eps = 1e-12) pmin(pmax(stats::plogis(x), eps), 1 - eps)
 
   # Allocate partial correlation matrix p, where
   # p[k, l] = rho_{k,l | 1:(k-1)} for 1 <= k < l <= d in the C-vine order 1..d
@@ -31,7 +31,7 @@ cvine_cholesky <- function(v, d, eta = 1) {
     phi_k <- eta + (d - k - 1) / 2
     for (ell in (k + 1L):d) {
       u  <- to_unit(v[idx]); idx <- idx + 1L
-      val <- 2 * qbeta(u, phi_k, phi_k) - 1
+      val <- 2 * stats::qbeta(u, phi_k, phi_k) - 1
       # clamp slightly to avoid exactly +/-1
       p[k, ell] <- max(min(val, 1 - 1e-15), -1 + 1e-15)
     }

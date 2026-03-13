@@ -26,14 +26,14 @@ rlkj_cvine <- function(n, d, eta = 1) {
 
   m <- d * (d - 1L) / 2L
   if (n == 1) {
-    v <- rlogis(m)
+    v <- stats::rlogis(m)
     return(cvine_cholesky(v, d, eta) %*% t(cvine_cholesky(v, d, eta)))
   }
 
   # For n > 1, return a 3D array
   out <- array(0, dim = c(d, d, n))
   for (i in seq_len(n)) {
-    v <- rlogis(m)
+    v <- stats::rlogis(m)
     L <- cvine_cholesky(v, d, eta)
     out[, , i] <- L %*% t(L)
   }
