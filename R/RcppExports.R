@@ -5,6 +5,10 @@ cvine_cholesky_cpp <- function(v, d, eta = 1.0) {
     .Call(`_lkj_cvine_cholesky`, v, d, eta)
 }
 
+cvine_inverse_cpp <- function(R, d, eta = 1.0) {
+    .Call(`_lkj_cvine_inverse`, R, d, eta)
+}
+
 onion_cholesky_cpp <- function(v, d, eta = 1.0) {
     .Call(`_lkj_onion_cholesky_impl`, v, d, eta)
 }
