@@ -23,6 +23,19 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// cvine_inverse
+NumericVector cvine_inverse(NumericMatrix R, int d, double eta);
+RcppExport SEXP _lkj_cvine_inverse(SEXP RSEXP, SEXP dSEXP, SEXP etaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type R(RSEXP);
+    Rcpp::traits::input_parameter< int >::type d(dSEXP);
+    Rcpp::traits::input_parameter< double >::type eta(etaSEXP);
+    rcpp_result_gen = Rcpp::wrap(cvine_inverse(R, d, eta));
+    return rcpp_result_gen;
+END_RCPP
+}
 // onion_cholesky_impl
 NumericMatrix onion_cholesky_impl(NumericVector v, int d, double eta);
 RcppExport SEXP _lkj_onion_cholesky_impl(SEXP vSEXP, SEXP dSEXP, SEXP etaSEXP) {
@@ -39,6 +52,7 @@ END_RCPP
 
 static const R_CallMethodDef CallEntries[] = {
     {"_lkj_cvine_cholesky", (DL_FUNC) &_lkj_cvine_cholesky, 3},
+    {"_lkj_cvine_inverse", (DL_FUNC) &_lkj_cvine_inverse, 3},
     {"_lkj_onion_cholesky_impl", (DL_FUNC) &_lkj_onion_cholesky_impl, 3},
     {NULL, NULL, 0}
 };
