@@ -5,14 +5,6 @@ cvine_cholesky_cpp <- function(v, d, eta = 1.0) {
     .Call(`_lkj_cvine_cholesky`, v, d, eta)
 }
 
-.lkj_cmit <- function(k, y) {
-    .Call(`_lkj_lkj_cmit`, k, y)
-}
-
-.lkj_par <- function(w) {
-    .Call(`_lkj_lkj_par`, w)
-}
-
 onion_cholesky_cpp <- function(v, d, eta = 1.0) {
     .Call(`_lkj_onion_cholesky_impl`, v, d, eta)
 }

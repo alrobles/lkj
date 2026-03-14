@@ -23,29 +23,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// lkj_cmit
-NumericMatrix lkj_cmit(int k, NumericVector y);
-RcppExport SEXP _lkj_lkj_cmit(SEXP kSEXP, SEXP ySEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< int >::type k(kSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type y(ySEXP);
-    rcpp_result_gen = Rcpp::wrap(lkj_cmit(k, y));
-    return rcpp_result_gen;
-END_RCPP
-}
-// lkj_par
-NumericVector lkj_par(NumericMatrix w);
-RcppExport SEXP _lkj_lkj_par(SEXP wSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericMatrix >::type w(wSEXP);
-    rcpp_result_gen = Rcpp::wrap(lkj_par(w));
-    return rcpp_result_gen;
-END_RCPP
-}
 // onion_cholesky_impl
 NumericMatrix onion_cholesky_impl(NumericVector v, int d, double eta);
 RcppExport SEXP _lkj_onion_cholesky_impl(SEXP vSEXP, SEXP dSEXP, SEXP etaSEXP) {
@@ -62,8 +39,6 @@ END_RCPP
 
 static const R_CallMethodDef CallEntries[] = {
     {"_lkj_cvine_cholesky", (DL_FUNC) &_lkj_cvine_cholesky, 3},
-    {"_lkj_lkj_cmit", (DL_FUNC) &_lkj_lkj_cmit, 2},
-    {"_lkj_lkj_par", (DL_FUNC) &_lkj_lkj_par, 1},
     {"_lkj_onion_cholesky_impl", (DL_FUNC) &_lkj_onion_cholesky_impl, 3},
     {NULL, NULL, 0}
 };
